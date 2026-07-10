@@ -1,0 +1,84 @@
+datasets:
+
+  - table: customers
+
+    common_transformations:
+      trim: true
+      remove_duplicates: true
+      remove_nulls: true
+
+    transformations:
+
+      rename_columns:
+        customerid: customer_id
+        customername: customer_name
+
+      cast_columns:
+        zipcode: string
+
+      uppercase:
+        - city
+
+      lowercase:
+        - email
+
+      drop_columns:
+        - remarks
+
+      add_columns:
+        load_date: "current_date()"
+
+  - table: products
+
+    common_transformations:
+      trim: true
+      remove_duplicates: true
+      remove_nulls: false
+
+    transformations:
+
+      rename_columns:
+        productid: product_id
+        productname: product_name
+
+      cast_columns:
+        price: double
+
+      uppercase:
+        - category
+
+      lowercase: []
+
+      drop_columns:
+        - description
+
+      add_columns:
+        load_date: "current_date()"
+
+  - table: sales
+
+    common_transformations:
+      trim: true
+      remove_duplicates: true
+      remove_nulls: true
+
+    transformations:
+
+      rename_columns:
+        salesid: sales_id
+        orderdate: order_date
+
+      cast_columns:
+        order_date: date
+        quantity: integer
+        amount: double
+
+      uppercase: []
+
+      lowercase: []
+
+      drop_columns:
+        - comments
+
+      add_columns:
+        load_date: "current_date()"
