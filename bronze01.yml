@@ -1,0 +1,14 @@
+source_path: /Volumes/etl_framework_metadata/source_data/raw
+
+datasets:
+  - name: customers
+    source_file: customers.csv
+    target_table: customers
+
+  - name: products
+    source_file: products.csv
+    target_table: products
+
+  - name: sales
+    source_file: sales.csv
+    target_table: sales
