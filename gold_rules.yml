@@ -1,0 +1,29 @@
+catalog: ETL_Framework_metadata
+schema: gold
+
+datasets:
+
+  - table: fact_sales
+
+    source_tables:
+      - sales
+      - customers
+      - products
+
+    dimensions:
+
+      - table: dim_customers
+        source: customers
+
+      - table: dim_products
+        source: products
+
+    joins:
+
+      - left: sales.customer_id
+        right: customers.customer_id
+        type: left
+
+      - left: sales.product_id
+        right: products.product_id
+        type: left
